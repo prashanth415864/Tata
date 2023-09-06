@@ -1,0 +1,25 @@
+resource "aws_security_group" "allow_tls236" {
+  name        = "allow_tls236"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = "vpc-0730e29754b34910c"
+  
+  ingress {
+    description      = "HTTPS"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  ingress {
+    description      = "HTTP"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+tags = {
+    Name = "allow_tls236"
+  }
+}
